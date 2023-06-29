@@ -18,7 +18,11 @@ def request_search():
     index='idx',
     body={
     "query" : {"match": {"content": search_term}},
-    "highlight" : {"pre_tags" : ['<b>'] , "post_tags" : ["</b>"], "fields" : {"content":{}}}})
+    "highlight" : {"pre_tags" : ['<b>'] , "post_tags" : ["</b>"], "fields" : {"content":{}}
+                  }
+    }
+    )
+    
     res['ST']=search_term
 
     for hit in res['hits']['hits']:
