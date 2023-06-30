@@ -49,27 +49,26 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>File Name</th>
-                    <th>Path</th>
+                    <th>Year</th>
+                    <th>Case</th>
                     <th>Summary</th>
+                    <th>Path</th>
                     <th>Size</th>
-                    <th>Created</th>
-                    <th>LastModified</th>
                 </tr>
             </thead>
 
             {% for hit in res['hits']['hits'] %}
             <tbody>
                 <tr>
-                    <th scope="row">{{ hit['_source']['file']['filename'] }}</th>
-                    <td><a href="{{ hit['_source']['file']['url'] }}">{{ hit['_source']['path']['real'] }}</a></td>
+                    <td>{{ hit['year'] }}</td>
+                    <td>{{ hit['case'] }}</td>
                     <td id="{{loop.index}}" name="goodSummary"> {{ hit['good_summary']}} </td>
+                    <td> {{ hit['virtual'] }} </td>
                     <td>{{ hit['_source']['file']['filesize'] }}</td>
-                    <td>{{ hit['_source']['file']['created'] }}</td>
-                    <td>{{ hit['_source']['file']['last_modified'] }}</td>
                 </tr>
             </tbody>
             {% endfor %}
+
         </table>
     </div>
     </div>
