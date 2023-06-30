@@ -27,6 +27,11 @@ def request_search():
 
     for hit in res['hits']['hits']:
         hit['good_summary']='….'.join(hit['highlight']['content'][1:])
+        hit['virtual'] = hit['_source']['path']['virtual']
+        tokens = hit['virtual'].split("/")
+        hit['year'] = tokens[1]
+        hit['case'] = tokens[2]
+
         
     return render_template('results.html', res=res)
                         
